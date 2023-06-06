@@ -15,6 +15,22 @@ class Book:
         self.yearPublished = yearPublished
         self.copiesSold = copiesSold
 
+class User:
+    #This will contain all of the user data
+    def __int__(self, username: str, password: str, name: str, email: str, address: str,
+                 home_address: str, credit_card: str):
+        self.username = username
+        self.username = username
+        self.password = password
+        self.name = name
+        self.email = email
+        self.address = address
+        self.home_address = home_address
+        self.credit_card = credit_card
+
+
+
+
     # Overwritten print to string method to return SQL friendly string
     def __str__(self):
         output = ""
