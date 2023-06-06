@@ -20,7 +20,6 @@ class User:
     def __int__(self, username: str, password: str, name: str, email: str, address: str,
                  home_address: str, credit_card: str):
         self.username = username
-        self.username = username
         self.password = password
         self.name = name
         self.email = email
