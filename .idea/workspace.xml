@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="30cc8c51-9b1c-4ff1-9b99-11224a66fcb9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookEntity.py" beforeDir="false" afterPath="$PROJECT_DIR$/bookEntity.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbConnect.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbConnect.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +47,7 @@
       <option name="presentableId" value="Default" />
       <updated>1685492378646</updated>
       <workItem from="1685492438575" duration="127000" />
-      <workItem from="1686072390434" duration="5313000" />
+      <workItem from="1686072390434" duration="5943000" />
     </task>
     <servers />
   </component>
