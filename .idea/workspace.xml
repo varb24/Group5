@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="30cc8c51-9b1c-4ff1-9b99-11224a66fcb9" name="Changes" comment="" />
+    <list default="true" id="30cc8c51-9b1c-4ff1-9b99-11224a66fcb9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +28,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "DC-test-branch",
+    "git-widget-placeholder": "Sprint-3-David-Colina",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "vcs.Git",
     "vue.rearranger.settings.migration": "true"
   }
@@ -37,6 +46,7 @@
       <option name="presentableId" value="Default" />
       <updated>1685492378646</updated>
       <workItem from="1685492438575" duration="127000" />
+      <workItem from="1686850108186" duration="2037000" />
     </task>
     <servers />
   </component>
@@ -45,5 +55,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Group5$hellworld.coverage" NAME="hellworld Coverage Results" MODIFIED="1685492564416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Group5$app.coverage" NAME="app Coverage Results" MODIFIED="1686852835284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycharm/flaskBooks" />
   </component>
 </project>
