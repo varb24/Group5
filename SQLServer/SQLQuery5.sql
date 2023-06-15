@@ -1,0 +1,7 @@
+SELECT TOP (1000) [Username]
+      ,[Password]
+      ,[Name]
+      ,[Emailaddress]
+      ,[Homeaddress]
+      ,[CreditCard]
+  FROM [BooksAFewHundred].[dbo].[UserData]
