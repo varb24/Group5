@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30cc8c51-9b1c-4ff1-9b99-11224a66fcb9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pycharm/flaskBooks/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycharm/flaskBooks/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pycharm/flaskBooks/helperFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycharm/flaskBooks/helperFunctions.py" afterDir="false" />
-    </list>
+    <list default="true" id="30cc8c51-9b1c-4ff1-9b99-11224a66fcb9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +52,7 @@
       <updated>1685492378646</updated>
       <workItem from="1685492438575" duration="127000" />
       <workItem from="1686850108186" duration="2037000" />
-      <workItem from="1686862910195" duration="5584000" />
+      <workItem from="1686862910195" duration="6425000" />
     </task>
     <servers />
   </component>
