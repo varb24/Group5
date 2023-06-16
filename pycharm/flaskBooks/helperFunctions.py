@@ -4,9 +4,9 @@ import pyodbc
 
 # Database connection params
 def get_db_connection():
-    server = 'localhost'
+    server = '(local)'
     database = 'BooksAFewHundred'
-    username = 'Group'
+    username = 'Ted'
     password = 'book'
 
     # Connecting to the database using PyODBC
