@@ -44,3 +44,7 @@ def handle_get_rating_request(userid):
     # Close the database connection
     conn.close()
     return jsonify(result)
+
+def create_user(conn,user):
+    cus
+
