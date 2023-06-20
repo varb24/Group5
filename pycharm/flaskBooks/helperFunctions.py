@@ -47,17 +47,13 @@ def get_user_by_username(username):
     }
     return user
 
-def handle_get_rating_request(userid):
-    # Database connection
-    conn = get_db_connection()
-    # Retrieve the ratings for the specified user from database
-    result = get_ratings_by_user(conn, userid)
-    # Close the database connection
-    conn.close()
-    return jsonify(result)
 
 def create_user(conn,user_data):
+    #Create a cursosr from the connection
+
     cursor = conn.cursor()
+
+    #Inserts the data from UserData into the following collumn fields
     query = '''
         INSERT INTO UserData (Username, Password, Name, Emailaddress, Homeaddress)
         VALUES (?, ?, ?, ?, ?)
@@ -72,3 +68,7 @@ def create_user(conn,user_data):
     cursor.execute(query, values)
     conn.commit()
 
+def update_user_request(username, data):
+    # Database connection and cursor
+    conn = get_db_connection()
+    cursor = conn.cursor()

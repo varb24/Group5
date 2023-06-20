@@ -8,7 +8,6 @@ app = Flask(__name__)
 # Define a route for getting data by the user's username. Get method because
 @app.route('/users/<username>', methods=['GET'])
 
-
 def get_user_by_username(username):
     user = helperFunctions.get_user_by_username(username)
     #Self explainitory, if we can't find anything on that user, we print that the user is not found
@@ -31,7 +30,15 @@ def create_user():
     #close the database connection
     conn.close()
 
-    return jsonify({'message': 'User created successfilly'}), 201
+    return jsonify({'message': 'User created successfully'}), 201
+
+@app.route('/api/users',methods = ['PATCH'])
+def update_user_data(username):
+    # Get the user data from the request body
+    data = request.json
+    helperFunctions.update_user_request(username, data)
+
+    return jsonify({'message': 'User information updated successfully'}), 201
 
 if __name__ == '__main__':
     app.run()
