@@ -16,25 +16,36 @@ def get_db_connection():
 
 
 # Function that gets ratings by user
-def get_ratings_by_user(conn, userid):
-    # Create a cursor from the connection
+def get_user_by_username(username):
+    #Connect to database
+    conn = get_db_connection()
+
+    #Create a cursosr from the connection
     cursor = conn.cursor()
-    # Execute the SQL query
-    cursor.execute('SELECT RatingId, Rating, BookId, UserId FROM Rating WHERE UserId = ?', userid)
-    # Fetch all rows from the executed SQL query
-    rows = cursor.fetchall()
 
-    # Process rows into a list of dictionaries to be returned
-    result = []
-    for row in rows:
-        result.append({
-            'RatingId': row[0],
-            'Rating': row[1],
-            'BookId': row[2],
-            'UserId': row[3]
-        })
-    return result
+    #Search the SQL database for all data where the username in the link
+    cursor.execute('SELECT * FROM UserData WHERE Username = ?', username)
 
+    #Fetches the first row from the executed SQL query
+    row = cursor.fetchone()
+
+    #Closes the cursor and the database connection
+    cursor.close()
+    conn.close()
+
+    #If there is nothing in that row, return nothing
+    if row is None:
+        return None
+    #Creates a list of user details
+    user = {
+        'Username': row[0],
+        'Password': row[1],
+        'Name': row[2],
+        'Emailaddress': row[3],
+        'Homeaddress': row[4],
+        'CreditCard': row[5]
+    }
+    return user
 
 def handle_get_rating_request(userid):
     # Database connection

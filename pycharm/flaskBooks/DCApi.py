@@ -5,12 +5,17 @@ import helperFunctions
 app = Flask(__name__)
 
 
-# Define a route for getting data by user id
-@app.route('/rating/<int:userid>', methods=['GET'])
-def get_data_by_id(userid):
-    return helperFunctions.handle_get_rating_request(userid)
-    #Call the 'handle_get_rating_request' function from the 'helperFunctions'
-    #Handles the GET request for ratings by a user
+# Define a route for getting data by the user's username. Get method because
+@app.route('/users/<username>', methods=['GET'])
+
+
+def get_user_by_username(username):
+    user = helperFunctions.get_user_by_username(username)
+    #Self explainitory, if we can't find anything on that user, we print that the user is not found
+    if user is None:
+        return jsonify({'message': 'User is not found'}), 404
+    #returns the data on the user, from the list made in get_user_by_username in helpferfuntions.py
+    return jsonify(user)
 
 @app.route('/api/users',methods =['POST'])
 def create_user():
