@@ -45,6 +45,19 @@ def handle_get_rating_request(userid):
     conn.close()
     return jsonify(result)
 
-def create_user(conn,user):
-    cus
+def create_user(conn,user_data):
+    cursor = conn.cursor()
+    query = '''
+        INSERT INTO UserData (Username, Password, Name, Emailaddress, Homeaddress)
+        VALUES (?, ?, ?, ?, ?)
+    '''
+    values =(
+        user_data['Username'],
+        user_data['Password'],
+        user_data.get('Name'),
+        user_data.get('Email'),
+        user_data.get('HomeAddress')
+    )
+    cursor.execute(query, values)
+    conn.commit()
 
