@@ -30,17 +30,15 @@ class Book:
         output = output.rstrip(output[-1])
         return output
 
-    #posts object to a website
-    def post(self, url: str):
-        response = requests.post(url, data = self)
-        return response
 
+    #returns JSON compatible string of object's attributes
     def json(self):
         output = "{"
         for attr, value in self.__dict__.items():
-            output += "'%s'," % value
+            output += f'"{attr}": "{value}",'
         # Removes the one extra ',' at the end of the string
-        output = output.rstrip(output[-1])
-        return vars(self)
-a = Book('144', 'Nnames', 'Wow', 'newbook', '42', 'Scifi', 'Me', '1986', '1324934')
-print(a.json)
+        output = output.rstrip(output[-1]) +  '}'
+        return output
+
+#CLEAN a = Book('144', 'Nnames', 'Wow', 'newbook', '42', 'Scifi', 'Me', '1986', '1324934')
+#print(a.json())
