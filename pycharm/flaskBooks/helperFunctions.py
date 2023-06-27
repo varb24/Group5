@@ -24,7 +24,7 @@ def get_user_by_username(username):
     cursor = conn.cursor()
 
     # Search the SQL database for all data where the username in the link
-    cursor.execute('SELECT * FROM UserData WHERE Username = ?', username)
+    cursor.execute('SELECT UserName,Password,Name,Email,HomeAddress,CreditCard FROM LogUser WHERE name = ?', username)
 
     # Fetches the first row from the executed SQL query
     row = cursor.fetchone()
@@ -53,9 +53,9 @@ def create_user(conn, user_data):
     cursor = conn.cursor()
 
     # Inserts the data from UserData into the following collumn fields
-    query = ''' INSERT INTO UserData (Username, Password, Name, Emailaddress, Homeaddress)VALUES (?, ?, ?, ?, ?) '''
+    query = ' INSERT INTO LogUser (UserName,Password,Name,Email,HomeAddress,)VALUES (?, ?, ?, ?, ?) '
     values = (
-        user_data['Username'],
+        user_data['UserName'],
         user_data['Password'],
         user_data.get('Name'),
         user_data.get('Email'),
@@ -69,7 +69,7 @@ def update_user_data(username, data):
     # Database connection and cursor
     conn = get_db_connection()
     cursor = conn.cursor()
-    query = ''' UPDATE UserData SET '''
+    query = ' UPDATE LogUser SET '
     values = []
     #
     for key, value in data.items():
@@ -88,7 +88,7 @@ def update_user_data(username, data):
 def credit_card_creation(username, credit_card_data):
     conn = get_db_connection()
 
-    query = 'UPDATE UserData SET CreditCard = ? WHERE Username = ?'
+    query = 'UPDATE LogUser SET CreditCard = ? WHERE UserName = ?'
 
     conn.execute(query, (credit_card_data, username))
 
