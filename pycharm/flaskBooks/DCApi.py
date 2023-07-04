@@ -23,7 +23,6 @@ def get_user_by_username(username):
 def create_user():
     # Get the user data from the request body
     user_data = request.json
-
     # Database connection
     conn = helperFunctions.get_db_connection()
 
