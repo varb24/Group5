@@ -30,7 +30,7 @@ def create_user():
     # Create the user in the database
     helperFunctions.create_user(conn, user_data)
 
-    # close the database connection
+    # Close the database connection
     conn.close()
 
     return jsonify({'message': 'User created successfully'}), 201
