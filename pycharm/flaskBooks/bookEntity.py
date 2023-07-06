@@ -12,8 +12,8 @@ class Book:
         self.bookName = bookName
         self.bookDescription = bookDescription
         self.price = price
-        self.author = author
         self.genre = genre
+        self.author = author
         self.publisher = publisher
         self.yearPublished = yearPublished
         self.copies_sold = copies_sold
@@ -40,5 +40,28 @@ class Book:
         output = output.rstrip(output[-1]) +  '}'
         return output
 
-#CLEAN a = Book('144', 'Nnames', 'Wow', 'newbook', '42', 'Scifi', 'Me', '1986', '1324934')
-#print(a.json())
+class Author:
+    def __init__(self, firstName: str, lastName: str, description: str, biography: str, publisherID: int):
+        self.firstName = firstName
+        self.lastName = lastName
+        self.biography = biography
+        self.description = description
+        self.publisher = publisherID
+
+    def __str__(self):
+        output = ""
+        # iterates through all object attributes and adds them to a string
+        for attr, value in self.__dict__.items():
+            output += "'%s'," % value
+        # Removes the one extra ',' at the end of the string
+        output = output.rstrip(output[-1])
+        return output
+
+    #returns JSON compatible string of object's attributes
+    def json(self):
+        output = "{"
+        for attr, value in self.__dict__.items():
+            output += f'"{attr}": "{value}",'
+        # Removes the one extra ',' at the end of the string
+        output = output.rstrip(output[-1]) +  '}'
+        return output
