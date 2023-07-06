@@ -41,7 +41,8 @@ class Book:
         return output
 
 class Author:
-    def __init__(self, firstName: str, lastName: str, description: str, biography: str, publisherID: int):
+    def __init__(self,AuthorId:str, firstName: str, lastName: str, description: str, biography: str, publisherID: int):
+        self.AuthorId = AuthorId
         self.firstName = firstName
         self.lastName = lastName
         self.biography = biography

@@ -68,13 +68,13 @@ def get_book(isbn):
 @app.route('/books/author/post', methods=['POST'])
 def post_author():
 
-    author = bookEntity.Author(firstName=request.json['firstName'],
+    author = bookEntity.Author(AuthorId=request.json['AuthorId'],firstName=request.json['firstName'],
                            lastName=request.json['lastName'], description=request.json['description'],
                            biography=request.json['biography'],
                            publisherID=request.json['publisherID'])
 
     # Will throw exception if there is duplicate data
-    dbBoilerPlate = "INSERT INTO [dbo].[Author] ([FirstName],[LastName],[Description],[Biography],[publisherID]) Values("
+    dbBoilerPlate = "INSERT INTO [dbo].[Author] ([AuthorId],[FirstName],[LastName],[Description],[Biography],[publisherID]) Values("
     # entry string is the entire command which tells the database to add information
     entryString = dbBoilerPlate + author.__str__() + ")"
     try:
