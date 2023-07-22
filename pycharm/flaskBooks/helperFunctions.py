@@ -3,7 +3,7 @@ import pyodbc
 
 # Database connection params
 def get_db_connection():
-    server = 'David'
+    server = 'LAPTOP-OJUP0D6T'
     database = 'BooksAFewHundred'
     username = 'Ted'
     password = 'book'
