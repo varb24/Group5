@@ -13,7 +13,26 @@ def get_db_connection():
         'DRIVER={SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
     return conn
 
-# Function that gets ratings by user
+
+# Feature 1
+def create_user(conn, user_data):
+    # Create a cursosr from the connection
+
+    cursor = conn.cursor()
+
+    # Inserts the data from LogUser into the following collumn fields
+    query = 'INSERT INTO LogUser (UserName, Password, Name, Email, HomeAddress) VALUES (?, ?, ?, ?, ?)'
+    values = (
+        user_data['Username'],
+        user_data['Password'],
+        user_data.get('Name'),
+        user_data.get('Email'),
+        user_data.get('HomeAddress')
+    )
+    cursor.execute(query, values)
+    conn.commit()
+
+# Feature 2: Helper Functions
 def get_user_by_username(username):
     # Connect to database
     conn = get_db_connection()
@@ -44,35 +63,22 @@ def get_user_by_username(username):
     }
     return user
 
-# Feature 1
-def create_user(conn, user_data):
-    # Create a cursosr from the connection
-
-    cursor = conn.cursor()
-
-    # Inserts the data from LogUser into the following collumn fields
-    query = 'INSERT INTO LogUser (UserName, Password, Name, Email, HomeAddress) VALUES (?, ?, ?, ?, ?)'
-    values = (
-        user_data['Username'],
-        user_data['Password'],
-        user_data.get('Name'),
-        user_data.get('Email'),
-        user_data.get('HomeAddress')
-    )
-    cursor.execute(query, values)
-    conn.commit()
 
 
+#Feature 3
 def update_user_data(username, data):
     # Database connection and cursor
     conn = get_db_connection()
     cursor = conn.cursor()
     query = ''' UPDATE LogUser SET '''
     values = []
-    #
-    for key, value in data.items():
-        if key.lower() != 'emailaddress':
-            query += f"{key} = ?, "
+    #This next part deals with the fact that the username and email cannot be changed.
+    # The username or email cannot be changed, we will name them as banned fields
+    banned_fields = ['Username', 'Email']
+    # Iterate through the key-value pairs in the data dictionary
+    for field, value in data.items():
+        if field not in banned_fields:
+            query += f"{field} = ?, "
             values.append(value)
 
     query = query.rstrip(', ') + ''' Where Username = ? '''
