@@ -26,7 +26,8 @@ def get_db_connection():
     cursor = conn.cursor()
     return cursor
 #Object pipes to DB
-cursor = get_db_connection()
+#cursor = get_db_connection()
+cursor = connectLocal()
 @app.route('/books/post/', methods=['POST'])
 def postBook():
     book = bookEntity.Book(ISBN=request.json['ISBN'], bookName=request.json['name'],
@@ -51,24 +52,59 @@ def postBook():
 
 @app.route('/books/<isbn>', methods=['GET'])
 def get_book(isbn):
-    query = f"SELECT * FROM books_data WHERE isbn = '{isbn}'"
+    query = f"SELECT * FROM Book WHERE isbn = '{isbn}'"
     cursor.execute(query)
     book = cursor.fetchone()
     if book:
-        book_details = {
-            'ISBN': book.ISBN, 'name': book.name, 'description': book.description, 'price': book.price,
-            'genre': book.genre, 'author': book.authorID, 'publisherID': book.publisherID, 'year': book.year,
-            'copies sold': book.copiesSold
+        bookDetails = {
+            'ISBN': book.ISBN, 'name': book.Name, 'description': book.Description, 'price': book.Price,
+            'genre': book.Genre, 'author': book.AuthorId, 'publisherId': book.PublisherId, 'year': book.Year,
+            'copies sold': book.CopiesSold
         }
-        return jsonify(book_details)
+        return jsonify(bookDetails)
     else:
         return jsonify({'error': 'Book not found'}), 404
+#post a book given author object info
+@app.route('/books/author/post', methods=['POST'])
+def post_author():
 
+    author = bookEntity.Author(AuthorId=request.json['AuthorId'],firstName=request.json['firstName'],
+                           lastName=request.json['lastName'], description=request.json['description'],
+                           biography=request.json['biography'],
+                           publisherID=request.json['publisherID'])
 
+    # Will throw exception if there is duplicate data
+    dbBoilerPlate = "INSERT INTO [dbo].[Author] ([AuthorId],[FirstName],[LastName],[Description],[Biography],[publisherID]) Values("
+    # entry string is the entire command which tells the database to add information
+    entryString = dbBoilerPlate + author.__str__() + ")"
+    try:
+        # sends the entryString command to the db.
+        print(entryString)
+        cursor.execute(entryString)
+        cursor.commit()
+    except pyodbc.IntegrityError:
+        print("IntegrityError. Likely duplicate primary key value for book: " + author.__str__())
+    return "PUT request successful!"
+#returns all books written by input author
+@app.route('/books/author/<authorID>', methods=['GET'])
+def get_book_by_author(authorID):
+    query = f"SELECT * FROM Book WHERE authorID = '{authorID}'"
+    cursor.execute(query)
+    books = cursor.fetchall()
+    if books:
+        bookDetails = []
+        for book in books:
+            bookDetails.append({
+                'ISBN': book.ISBN, 'name': book.Name, 'description': book.Description, 'price': book.Price,
+                'genre': book.Genre, 'author': book.AuthorId, 'publisherId': book.PublisherId, 'year': book.Year,
+                'copies sold': book.CopiesSold
+            })
+        return jsonify(bookDetails)
+    else:
+        return jsonify({'error': 'Book not found'}), 404
 @app.route('/')
 def index():
-    print('This message will be printed in the console.')
-    return 'Hello, Flask!'
+    return 'Hello, Welcome to our book catalog!'
 
 
 if __name__ == '__main__':
