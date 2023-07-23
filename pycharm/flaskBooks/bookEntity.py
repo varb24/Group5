@@ -41,8 +41,12 @@ class Book:
         return output
 
 class Author:
+<<<<<<< Updated upstream
     def __init__(self,AuthorId:str, firstName: str, lastName: str, description: str, biography: str, publisherID: int):
         self.AuthorId = AuthorId
+=======
+    def __init__(self, firstName: str, lastName: str, description: str, biography: str, publisherID: str):
+>>>>>>> Stashed changes
         self.firstName = firstName
         self.lastName = lastName
         self.biography = biography
