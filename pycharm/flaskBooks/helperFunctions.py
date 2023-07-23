@@ -44,7 +44,7 @@ def get_user_by_username(username):
     }
     return user
 
-
+# Feature 1
 def create_user(conn, user_data):
     # Create a cursosr from the connection
 
