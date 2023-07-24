@@ -16,12 +16,13 @@ def get_db_connection():
 
 # Feature 1
 def create_user(conn, user_data):
-    # Create a cursosr from the connection
+    # Create a cursor from the connection
 
     cursor = conn.cursor()
 
-    # Inserts the data from LogUser into the following collumn fields
+    # Set up the query
     query = 'INSERT INTO LogUser (UserName, Password, Name, Email, HomeAddress) VALUES (?, ?, ?, ?, ?)'
+    # Provides the values for each column in the table
     values = (
         user_data['Username'],
         user_data['Password'],
@@ -29,6 +30,7 @@ def create_user(conn, user_data):
         user_data.get('Email'),
         user_data.get('HomeAddress')
     )
+    # Executes the query
     cursor.execute(query, values)
     conn.commit()
 
@@ -37,10 +39,10 @@ def get_user_by_username(username):
     # Connect to database
     conn = get_db_connection()
 
-    # Create a cursosr from the connection
+    # Create a cursor from the connection
     cursor = conn.cursor()
 
-    # Search the SQL database for all data where the username in the link
+    # Search the SQL database for all data where the username is found
     cursor.execute('SELECT UserName, Password, Name, Email, HomeAddress, CreditCard FROM LogUser WHERE UserName = ?', username)
 
     # Fetches the first row from the executed SQL query
@@ -70,30 +72,36 @@ def update_user_data(username, data):
     # Database connection and cursor
     conn = get_db_connection()
     cursor = conn.cursor()
+    # Starts the query
     query = ''' UPDATE LogUser SET '''
     values = []
-    #This next part deals with the fact that the username and email cannot be changed.
     # The username or email cannot be changed, we will name them as banned fields
-    banned_fields = ['Username', 'Email']
+    banned_fields = ['UserName', 'Email']
     # Iterate through the key-value pairs in the data dictionary
     for field, value in data.items():
+        # This checks if the field is disallowed, if it is not, go through with the appending
         if field not in banned_fields:
             query += f"{field} = ?, "
             values.append(value)
-
+        else:
+            # Else, send an error
+            return jsonify({'error': f"Cannot update field '{field}'"}), 400
+    # Finishes up the query
     query = query.rstrip(', ') + ''' Where Username = ? '''
     values.append(username)
-
+    # Executes the query
     cursor.execute(query, values)
     conn.commit()
     conn.close()
 
-
+# Feature 4
 def credit_card_creation(username, credit_card_data):
+    # Establish connection
     conn = get_db_connection()
-
+    # Sets up the query
     query = 'UPDATE LogUser SET CreditCard = ? WHERE Username = ?'
 
+    # Exucutes the query
     conn.execute(query, (credit_card_data, username))
 
     conn.commit()

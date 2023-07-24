@@ -20,7 +20,7 @@ def create_user():
     # Close the database connection
     conn.close()
 
-    return jsonify({'message': 'User created successfully'}), 201
+    return jsonify({'message': 'User created successfully'}), 200
 
 
 # Rest API Action #2: Retrieve A User's fields by their username
@@ -30,7 +30,7 @@ def get_user_by_username(username):
     user = helperFunctions.get_user_by_username(username)
     # Self explainitory, if we can't find anything on that user, we print that the user is not found
     if user is None:
-        return jsonify({'message': 'User is not found'}), 404
+        return jsonify({'message': 'User is not found'}), 400
     # returns the data on the user, from the list made in get_user_by_username in helpferfuntions.py
     return jsonify(user)
 
