@@ -67,7 +67,7 @@ def get_user_by_username(username):
 
 
 
-#Feature 3
+# Feature 3
 def update_user_data(username, data):
     # Database connection and cursor
     conn = get_db_connection()
@@ -75,17 +75,12 @@ def update_user_data(username, data):
     # Starts the query
     query = ''' UPDATE LogUser SET '''
     values = []
-    # The username or email cannot be changed, we will name them as banned fields
-    banned_fields = ['UserName', 'Email']
-    # Iterate through the key-value pairs in the data dictionary
+
     for field, value in data.items():
-        # This checks if the field is disallowed, if it is not, go through with the appending
-        if field not in banned_fields:
+        # Reverted to old code, checks if the email field is being edited.
+        if field != 'Email':
             query += f"{field} = ?, "
             values.append(value)
-        else:
-            # Else, send an error
-            return jsonify({'error': f"Cannot update field '{field}'"}), 400
     # Finishes up the query
     query = query.rstrip(', ') + ''' Where Username = ? '''
     values.append(username)
