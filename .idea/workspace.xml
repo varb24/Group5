@@ -35,7 +35,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Sprint-4---David-Colina&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Sprint-4&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -65,6 +65,8 @@
       <workItem from="1687465298116" duration="1450000" />
       <workItem from="1688586508323" duration="5335000" />
       <workItem from="1688684449200" duration="2760000" />
+      <workItem from="1689119146067" duration="678000" />
+      <workItem from="1694104237218" duration="204000" />
     </task>
     <servers />
   </component>
